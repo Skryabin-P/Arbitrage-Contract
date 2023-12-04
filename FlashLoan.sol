@@ -5,7 +5,9 @@ import {FlashLoanSimpleReceiverBase} from "@aave/core-v3/contracts/flashloan/bas
 import {IPoolAddressesProvider} from "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol";
 import {IERC20} from "@aave/core-v3/contracts/dependencies/openzeppelin/contracts/IERC20.sol";
 
-// 0x812C23640dC89FF6Cb8B5AF44a3094a94b26b93A IPoolAddressesProvider sepolia eth
+// 0x012bAC54348C0E635dCAc9D5FB99f06F24136C9A IPoolAddressesProvider sepolia eth
+
+// 
 
 contract Flashloan is FlashLoanSimpleReceiverBase {
 
@@ -32,18 +34,29 @@ contract Flashloan is FlashLoanSimpleReceiverBase {
   ) external override returns (bool) {
         // we have the borrowed funds
         // custom logic
+
+        (address[] memory tos, bytes[] memory data) = abi.decode(params, (address[], bytes[]));
+
+        require(tos.length > 0 && tos.length == data.length, "Invalid input");
+
+        for(uint256 i; i < tos.length; i++) {
+
+            // there must be an approve calls 
+            
+            (bool success,bytes memory returndata) = tos[i].call{gas: gasleft()}(data[i]);
+            require(success, string(returndata));
+        }
         uint256 amountOwed = amount + premium;
         IERC20(asset).approve(address(POOL), amountOwed);
-
         return true;
 
   }
 
-  function requestFlashLoan(address _token, uint _amount) public {
+  function requestFlashLoan(address _token, uint _amount, bytes calldata params) public {
     address receiverAddress = address(this);
     address asset = _token;
     uint amount = _amount;
-    bytes memory params;
+    //bytes memory params;
     uint16 referralCode;
 
     POOL.flashLoanSimple(

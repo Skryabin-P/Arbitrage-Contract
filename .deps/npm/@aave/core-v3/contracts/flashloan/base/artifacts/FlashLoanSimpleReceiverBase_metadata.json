@@ -6,17 +6,6 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_addressProvider",
-						"type": "address"
-					}
-				],
-				"stateMutability": "nonpayable",
-				"type": "constructor"
-			},
-			{
 				"inputs": [],
 				"name": "ADDRESSES_PROVIDER",
 				"outputs": [
@@ -80,68 +69,10 @@
 				],
 				"stateMutability": "nonpayable",
 				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_tokenAddress",
-						"type": "address"
-					}
-				],
-				"name": "getBalance",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_token",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_amount",
-						"type": "uint256"
-					},
-					{
-						"internalType": "bytes",
-						"name": "params",
-						"type": "bytes"
-					}
-				],
-				"name": "requestFlashLoan",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_tokenAddress",
-						"type": "address"
-					}
-				],
-				"name": "withdraw",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"stateMutability": "payable",
-				"type": "receive"
 			}
 		],
 		"devdoc": {
+			"author": "Aave",
 			"kind": "dev",
 			"methods": {
 				"executeOperation(address,uint256,uint256,address,bytes)": {
@@ -158,6 +89,7 @@
 					}
 				}
 			},
+			"title": "FlashLoanSimpleReceiverBase",
 			"version": 1
 		},
 		"userdoc": {
@@ -167,12 +99,13 @@
 					"notice": "Executes an operation after receiving the flash-borrowed asset"
 				}
 			},
+			"notice": "Base contract to develop a flashloan-receiver contract.",
 			"version": 1
 		}
 	},
 	"settings": {
 		"compilationTarget": {
-			"FlashLoan.sol": "Flashloan"
+			".deps/npm/@aave/core-v3/contracts/flashloan/base/FlashLoanSimpleReceiverBase.sol": "FlashLoanSimpleReceiverBase"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -186,15 +119,7 @@
 		"remappings": []
 	},
 	"sources": {
-		"@aave/core-v3/contracts/dependencies/openzeppelin/contracts/IERC20.sol": {
-			"keccak256": "0xf57d62241e553696a1324d225663ba2e1a51db0a51ca236d0c1b009d89b6284c",
-			"license": "AGPL-3.0",
-			"urls": [
-				"bzz-raw://d327db93b636790909aa137124f30a856ac1631cb79c476aa188f9627fda8d03",
-				"dweb:/ipfs/QmaxpmEoBFioeNYmpxJemyZ7aYF2nX1NKW1XDqREm7i6es"
-			]
-		},
-		"@aave/core-v3/contracts/flashloan/base/FlashLoanSimpleReceiverBase.sol": {
+		".deps/npm/@aave/core-v3/contracts/flashloan/base/FlashLoanSimpleReceiverBase.sol": {
 			"keccak256": "0x295cc551c03e55a0b119fc671a12cf9afa07caad58ffbc62bcdb90ab2769e1a4",
 			"license": "AGPL-3.0",
 			"urls": [
@@ -202,7 +127,7 @@
 				"dweb:/ipfs/QmU74znMLDtzxJQkmCmf98qRekRECuT7P6FJL89QjwM4qc"
 			]
 		},
-		"@aave/core-v3/contracts/flashloan/interfaces/IFlashLoanSimpleReceiver.sol": {
+		".deps/npm/@aave/core-v3/contracts/flashloan/interfaces/IFlashLoanSimpleReceiver.sol": {
 			"keccak256": "0xba50a7834ddfdca3e3cfac09043f72699be42ff88925641ac30950a434b2b2ff",
 			"license": "AGPL-3.0",
 			"urls": [
@@ -210,7 +135,7 @@
 				"dweb:/ipfs/Qmco68eeRnTUGyZaoZ9Vu4R7xzH9x1pUwP36nUvrxnxHxg"
 			]
 		},
-		"@aave/core-v3/contracts/interfaces/IPool.sol": {
+		".deps/npm/@aave/core-v3/contracts/interfaces/IPool.sol": {
 			"keccak256": "0xbfd2077251c8dc766a56d45f4b03eb07f3441323e79c0f794efea3657a99747f",
 			"license": "AGPL-3.0",
 			"urls": [
@@ -218,7 +143,7 @@
 				"dweb:/ipfs/QmSTaEKrhz1xNVnx4oBzWw8DenYPShVzJoP1A9GTEWkAzX"
 			]
 		},
-		"@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol": {
+		".deps/npm/@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol": {
 			"keccak256": "0x33d4308d9407b4ee2297fc4ba5acce1a96a6c658189e2778a4f6b90e032fb3b5",
 			"license": "AGPL-3.0",
 			"urls": [
@@ -226,20 +151,12 @@
 				"dweb:/ipfs/QmScNrQfDSPg1afJmkCty6fZkETUrWTmEXWeTmHoe7mSqa"
 			]
 		},
-		"@aave/core-v3/contracts/protocol/libraries/types/DataTypes.sol": {
+		".deps/npm/@aave/core-v3/contracts/protocol/libraries/types/DataTypes.sol": {
 			"keccak256": "0xff95adc41b2bbda0c08208e66c1e2fd0d99fa6d8f937667c2b366ddf08f10eeb",
 			"license": "BUSL-1.1",
 			"urls": [
 				"bzz-raw://734ac1a253d41ace0fe411359248a1534e530b85b3c0c9fe37931ee11580dbc6",
 				"dweb:/ipfs/QmNSm1bqFo2x8EghUyShK34bU1esDeLCw1ZWPoRZwcoVvM"
-			]
-		},
-		"FlashLoan.sol": {
-			"keccak256": "0x7b48c887a1a8ecd52969ec104d818a68a5e524651761a9589b93b8e17a3bd352",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://ee5f9b93a880bcf90b0eb0f04eb9b972df29f0628437c8034d13860511ef7948",
-				"dweb:/ipfs/QmS6irTpFTEzFi6P8Ko8SWLbX1iuJPthJXf9oPco3BfyWv"
 			]
 		}
 	},
