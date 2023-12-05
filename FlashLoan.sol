@@ -35,17 +35,21 @@ contract Flashloan is FlashLoanSimpleReceiverBase {
         // we have the borrowed funds
         // custom logic
 
-        (address[] memory tos, bytes[] memory data) = abi.decode(params, (address[], bytes[]));
+        (address[] memory routers, bytes[] memory trades, address[] memory tokens, bytes[] memory approves) = abi.decode(params, (address[], bytes[], address[], bytes[]));
+        // router adresses length must be eaqual to trades data length
+        require(routers.length > 0 && routers.length == trades.length, "Invalid input");
 
-        require(tos.length > 0 && tos.length == data.length, "Invalid input");
+        for(uint256 i; i < routers.length; i++) {
 
-        for(uint256 i; i < tos.length; i++) {
-
-            // there must be an approve calls 
-            
-            (bool success,bytes memory returndata) = tos[i].call{gas: gasleft()}(data[i]);
+            // Approve each token 
+            (bool successApprove, ) = tokens[i].call{gas: gasleft()}(approves[i]);
+            require(successApprove, "Can not approve");
+            //Send trade data to contract adresses
+            (bool success, bytes memory returndata) = routers[i].call{gas: gasleft()}(trades[i]);
             require(success, string(returndata));
         }
+
+        // Approve borrowed amount + premium for AAVE pool contract
         uint256 amountOwed = amount + premium;
         IERC20(asset).approve(address(POOL), amountOwed);
         return true;
@@ -56,7 +60,6 @@ contract Flashloan is FlashLoanSimpleReceiverBase {
     address receiverAddress = address(this);
     address asset = _token;
     uint amount = _amount;
-    //bytes memory params;
     uint16 referralCode;
 
     POOL.flashLoanSimple(
