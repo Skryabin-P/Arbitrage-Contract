@@ -13,7 +13,7 @@
 						"type": "address"
 					}
 				],
-				"stateMutability": "nonpayable",
+				"stateMutability": "payable",
 				"type": "constructor"
 			},
 			{
@@ -82,6 +82,19 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "gas_left",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -121,6 +134,30 @@
 				"name": "requestFlashLoan",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "params",
+						"type": "bytes"
+					}
+				],
+				"name": "viewParams",
+				"outputs": [
+					{
+						"internalType": "address[]",
+						"name": "",
+						"type": "address[]"
+					},
+					{
+						"internalType": "bytes[]",
+						"name": "",
+						"type": "bytes[]"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -235,11 +272,11 @@
 			]
 		},
 		"FlashLoan.sol": {
-			"keccak256": "0x6676e887d86c188dca628b7e0940fbb3129afc0c66c7e2deaf5107ad2f90e5bd",
+			"keccak256": "0x0037c34bf66630c544d49a36634bb968d9c49b2c84ac1f3bda9b02eb31139104",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://91bedd7ceea45d5f95eac8408047fda94736dd8eb4d1d181d1b64a3f8c54561f",
-				"dweb:/ipfs/QmZXwf82VEm6B2rKaUdJrCGhTXoqa2r9Uppf4dzo1mJSRW"
+				"bzz-raw://a747b89288ce2893b458cc1b6d21b9c77b6155064f99bff7110e2ba2837da119",
+				"dweb:/ipfs/QmXQdN19iQH4BY9mcQUSRuMW9DKeXRPqgjJjzP8bTpyiGs"
 			]
 		}
 	},

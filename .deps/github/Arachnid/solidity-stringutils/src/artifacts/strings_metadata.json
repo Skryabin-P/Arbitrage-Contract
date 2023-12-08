@@ -1,0 +1,44 @@
+{
+	"compiler": {
+		"version": "0.8.10+commit.fc410830"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			".deps/github/Arachnid/solidity-stringutils/src/strings.sol": "strings"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		".deps/github/Arachnid/solidity-stringutils/src/strings.sol": {
+			"keccak256": "0x42cad11a7033f2fe05dd68611d2304407a620ac985b91edf29d5868cfe196223",
+			"urls": [
+				"bzz-raw://3cbc2333234e1f00eab5e57c4bcaf5115661e5e066a17c70af587a0a96f24669",
+				"dweb:/ipfs/QmPHvStqcvZL46LW5N2ExTwAaqNhRCcmAX66aR6oE1WDar"
+			]
+		}
+	},
+	"version": 1
+}
