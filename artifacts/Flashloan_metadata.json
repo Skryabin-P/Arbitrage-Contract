@@ -157,7 +157,7 @@
 						"type": "bytes[]"
 					}
 				],
-				"stateMutability": "view",
+				"stateMutability": "pure",
 				"type": "function"
 			},
 			{
@@ -272,11 +272,11 @@
 			]
 		},
 		"FlashLoan.sol": {
-			"keccak256": "0x0037c34bf66630c544d49a36634bb968d9c49b2c84ac1f3bda9b02eb31139104",
+			"keccak256": "0xa878a4ed452920b6de81f78031c45ed2398a1dfd51e1ebee7cc739c33081549d",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://a747b89288ce2893b458cc1b6d21b9c77b6155064f99bff7110e2ba2837da119",
-				"dweb:/ipfs/QmXQdN19iQH4BY9mcQUSRuMW9DKeXRPqgjJjzP8bTpyiGs"
+				"bzz-raw://cabb55bea42713460be3e0347841bdd55aa7da926c597931fd2d052849a418bf",
+				"dweb:/ipfs/QmV9fvJEZ1KexZxwanxv1cPV6eTrtVB96LiP5j2G5ZYazw"
 			]
 		}
 	},
