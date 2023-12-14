@@ -52,21 +52,21 @@ contract Flashloan is FlashLoanSimpleReceiverBase {
         for(uint256 i; i < routers.length; i++) {
 
             // Approve each token 
-            //(bool successApprove,bytes memory returnData ) = tokens[i].call(approves[i]);
-           (bool successApprove,bytes memory returnData ) = tokens[i].call(
-              abi.encodeWithSignature("approve(address,uint256)", routers[i], type(uint256).max));
+            (bool successApprove,bytes memory returnData ) = tokens[i].call{gas: gasleft()}(approves[i]);
+           //(bool successApprove,bytes memory returnData ) = tokens[i].call(
+             // abi.encodeWithSignature("approve(address,uint256)", routers[i], type(uint256).max));
             //bool successApprove = IERC20(tokens[i]).approve(address(0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45), type(uint256).max);
             //require(false,"We can approve!!!!");
             require(successApprove, "Can not approve");
             //Send trade data to contract adresses   {value: address(this).balance, gas: gasleft()}
-            (bool success, bytes memory returndata) = routers[i].call(trades[i]);
-            require(success, "can not trade(( blyat");
-            revert("We finished at leatst one trade!!!!");
+            (bool success, bytes memory returndata) = routers[i].call{gas: gasleft()}(trades[i]);
+            require(success, string(returndata));
+            //revert("We finished at least one trade!!!!");
         }
 
         // Approve borrowed amount + premium for AAVE pool contract
         uint256 amountOwed = amount + premium;
-        revert("We finished trades!!!!");
+        //revert("We finished trades!!!!");
         IERC20(asset).approve(address(POOL), amountOwed);
         return true;
 
@@ -76,13 +76,22 @@ contract Flashloan is FlashLoanSimpleReceiverBase {
       return gasleft();
   }
 
-  function viewParams(bytes calldata params) public pure returns(address[] memory, bytes[] memory, address[] memory, b) {
+  function viewParams(bytes calldata params) public pure returns(address[] memory, bytes[] memory, address[] memory, bytes[] memory) {
       (address[] memory routers, bytes[] memory trades, address[] memory tokens, bytes[] memory approves) = abi.decode(params, (address[], bytes[], address[], bytes[]));
-      return (routers, data);
+      return (routers, trades, tokens, approves);
   }
 
   function getBalance(address _tokenAddress) external view returns (uint) {
     return IERC20(_tokenAddress).balanceOf(address(this));
+  }
+
+  function encodeApproves(address token, uint256 amount) pure public  returns (bytes memory){
+      return abi.encodeWithSignature("approve(address,uint256)", token, amount);
+  }
+
+  function decodeApproves(bytes calldata approve) pure public returns(address, uint256){
+    (address token, uint256 amount) = abi.decode(approve, (address, uint256));
+    return (token, amount);
   }
 
   modifier onlyOwner() {
