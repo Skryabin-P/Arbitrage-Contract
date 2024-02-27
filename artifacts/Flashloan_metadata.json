@@ -82,19 +82,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "gas_left",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -134,30 +121,6 @@
 				"name": "requestFlashLoan",
 				"outputs": [],
 				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "bytes",
-						"name": "params",
-						"type": "bytes"
-					}
-				],
-				"name": "viewParams",
-				"outputs": [
-					{
-						"internalType": "address[]",
-						"name": "",
-						"type": "address[]"
-					},
-					{
-						"internalType": "bytes[]",
-						"name": "",
-						"type": "bytes[]"
-					}
-				],
-				"stateMutability": "pure",
 				"type": "function"
 			},
 			{
@@ -217,7 +180,7 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": false,
+			"enabled": true,
 			"runs": 200
 		},
 		"remappings": []
@@ -272,11 +235,11 @@
 			]
 		},
 		"FlashLoan.sol": {
-			"keccak256": "0xa878a4ed452920b6de81f78031c45ed2398a1dfd51e1ebee7cc739c33081549d",
+			"keccak256": "0xc086a86b4d3aa1a39454cb42719ae683106d260e4a68f51c7a3aef53a2fce071",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://cabb55bea42713460be3e0347841bdd55aa7da926c597931fd2d052849a418bf",
-				"dweb:/ipfs/QmV9fvJEZ1KexZxwanxv1cPV6eTrtVB96LiP5j2G5ZYazw"
+				"bzz-raw://7b2d60ce386dde2b6610ac7ad017b812bf410db12a0c9562f844f508eba4c794",
+				"dweb:/ipfs/QmdJMeuvnVm1iEA1RLVzXuojT7eMfNhEmRCawjt4P6JBFz"
 			]
 		}
 	},
